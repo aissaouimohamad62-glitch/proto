@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أويس عيساوي | السجل الرقمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #030305;
+            --bg-card: #0a0a0f;
+            --primary-blue: #00d4ff;
+            --deep-blue: #0055ff;
+            --text-main: #e0e0e0;
+            --text-muted: #8892b0;
+            --flame-glow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 85, 255, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #0a1128 0%, var(--bg-dark) 50%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--deep-blue); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-blue); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 3, 5, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            text-shadow: var(--flame-glow);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-blue);
+            transition: var(--transition);
+            box-shadow: var(--flame-glow);
+        }
+
+        .nav-links li a.active {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links li a.active::after, .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Sections container */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding: 120px 10% 50px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page-section.active-page {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section (Home) */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            height: calc(100vh - 120px);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .title-glitch {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #fff;
+            position: relative;
+        }
+
+        .title-glitch span {
+            color: var(--primary-blue);
+            text-shadow: var(--flame-glow);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .roles {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .role-badge {
+            padding: 8px 16px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.05);
+        }
+
+        .hero-image {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: var(--flame-glow);
+            animation: morph 8s ease-in-out infinite;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            color: var(--primary-blue);
+            transform: translateY(-5px);
+            box-shadow: var(--flame-glow);
+            border-color: var(--primary-blue);
+        }
+
+        /* Section Titles */
+        .section-header {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            right: 0;
+            background: var(--primary-blue);
+            box-shadow: var(--flame-glow);
+        }
+
+        /* Store / Books Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--deep-blue));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--flame-glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-buy {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn-buy:hover {
+            background: var(--primary-blue);
+            color: var(--bg-dark);
+            box-shadow: var(--flame-glow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; height: auto; }
+            .roles { justify-content: center; }
+            .social-links { justify-content: center; }
+            .nav-links { display: none; /* Can be replaced with a hamburger menu later */ }
+        }
+        /* تنسيقات خاصة ببطاقة الكتاب وصورته */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.book-cover-container {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* لضمان عدم تشوه أبعاد الصورة الإشهارية */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* تأثير الغشاء المظلم فوق الصورة وظهور السعر */
+.book-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(3, 3, 5, 0.9) 10%, rgba(0, 0, 0, 0));
+    opacity: 0.8;
+    transition: var(--transition);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.badge-price {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-shadow: var(--flame-glow);
+    box-shadow: var(--flame-glow);
+}
+
+/* حركة الأنيميشن والتوهج عند تمرير الفأرة على غلاف الكتاب */
+.book-card:hover .book-cover-container {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    transform: scale(1.02);
+}
+
+.book-card:hover .book-cover-img {
+    transform: scale(1.1) rotate(-1deg); /* حركة سينمائية لتقريب الصورة وتدويرها قليلاً */
+}
+
+.book-card:hover .book-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(3, 3, 5, 0.95) 30%, rgba(0, 212, 255, 0.05));
+}
+
+.btn-buy i {
+    margin-left: 8px;
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Onyx_Dev</div>
+        <ul class="nav-links">
+            <li><a class="nav-btn active" data-target="home">الواجهة الرئيسية</a></li>
+            <li><a class="nav-btn" data-target="skills">الترسانة</a></li>
+            <li><a class="nav-btn" data-target="projects">الأرشيف والمشاريع</a></li>
+            <li><a class="nav-btn" data-target="store">المكتبة</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="page-section active-page">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="title-glitch">أهلاً بك في نظام <span>عيساوي محمد أويس</span></h1>
+                <p class="subtitle">أصمم واجهات تتنفس، أمنتج مشاهد تخطف الأنظار، وأكتب لتبني عقلك وبرمجتك من الصفر. هنا حيث تندمج التقنية بالإبداع السينمائي.</p>
+                
+                <div class="roles">
+                    <span class="role-badge"><i class="fa-solid fa-code"></i> مطور واجهات أمامية</span>
+                    <span class="role-badge"><i class="fa-solid fa-film"></i> ممنتج فيديوهات</span>
+                    <span class="role-badge"><i class="fa-solid fa-book-open"></i> مؤلف وصانع محتوى</span>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/onyx_apex?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-btn" title="Instagram - Onyx Apex"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/aimoha10" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@PrinceOnyx-f7t" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.ibb.co/d02ZkMh7/695816176-18080707307320212-7769931604927005335-n.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="page-section">
+        <h2 class="section-header">ترسانة المهارات</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fa-brands fa-html5 card-icon"></i>
+                <h3>تطوير الويب (Frontend)</h3>
+                <p>بناء واجهات تفاعلية وسينمائية باستخدام HTML5, CSS3, و JavaScript، بالإضافة إلى هيكلة الأنظمة الذكية.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-video card-icon"></i>
+                <h3>المونتاج والتحريك</h3>
+                <p>تحرير الفيديو بأسلوب احترافي لشد الانتباه (Retention)، إضافة المؤثرات البصرية، والهندسة الصوتية.</p>
+            </div>
+            <div class="card">
+                <i class="fa-brands fa-python card-icon"></i>
+                <h3>المنطق البرمجي والبيانات</h3>
+                <p>استخدام Python لكتابة السكريبتات الذكية، وتحليل البيانات لبناء تطبيقات تعتمد على الأداء والسرعة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="page-section">
+        <h2 class="section-header">الأرشيف (مشاريع وصناعة محتوى)</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fa-solid fa-eye card-icon"></i>
+                <h3>Onyx Apex</h3>
+                <p>قناة متخصصة في علم النفس، تطوير الذات، وبناء العادات الانضباطية بأسلوب العرض المرئي والمونتاج المتقدم.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-gamepad card-icon"></i>
+                <h3>REN Gaming</h3>
+                <p>محتوى ألعاب (Faceless) يركز على تقديم تجربة مشاهدة غامرة، مع تصاميم بانر وصور مصغرة احترافية.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-server card-icon"></i>
+                <h3>Sovereign Tasker</h3>
+                <p>موقع وتطبيق ويب شخصي لإدارة الإنتاجية والمهام، مصمم بنظام XP يشبه الألعاب لتحفيز الانضباط.</p>
+            </div>
+        </div>
+    </section>
+<section id="store" class="page-section">
+        <h2 class="section-header">المكتبة الرقمية (متجر الكتب)</h2>
+        <div class="grid-container">
+            
+            <div class="card book-card">
+                <div class="book-cover-container">
+                    <img src="https://i.ibb.co/KxMDNHrx/Gemini-Generated-Image-pg49d0pg49d0pg49.png" alt="غلاف كتاب البرمجة بالبناء" class="book-cover-img">
+                    <div class="book-overlay">
+                        <span class="badge-price">2500 دج</span>
+                    </div>
+                </div>
+                <h3>البرمجة بالبناء</h3>
+                <p class="book-author">تأليف: عيساوي محمد أويس</p>
+                <p>دليلك العملي لتعلم تطوير الويب بالبناء الفوري. انسَ الحفظ الأكاديمي، وابنِ موقعك الاحترافي الأول في 30 يوماً فقط.</p>
+                <a href="https://www.instagram.com/onyx_apex/" target="_blank" class="btn-buy">
+                    <i class="fa-brands fa-instagram"></i> اطلب نسختك عبر إنستغرام
+                </a>
+            </div>
+
+            <div class="card book-card">
+                <div class="book-cover-container">
+                    <img src="https://i.ibb.co/MDQBjGXr/Gemini-Generated-Image-s1nq7ns1nq7ns1nq.png" alt="غلاف نظام الذكاء الاصطناعي" class="book-cover-img">
+                    <div class="book-overlay">
+                        <span class="badge-price">3500 دج</span>
+                    </div>
+                </div>
+                <h3>نظام الذكاء الاصطناعي للمحترفين</h3>
+                <p class="book-author">تأليف: عيساوي محمد أويس</p>
+                <p>دليلك العملي لتحويل عملك اليومي باستخدام أدوات الذكاء الاصطناعي. ابدأ بالأتمتة ووفر ساعات من وقتك الثمين.</p>
+                <a href="https://www.instagram.com/onyx_apex/" target="_blank" class="btn-buy">
+                    <i class="fa-brands fa-instagram"></i> اطلب نسختك عبر إنستغرام
+                </a>
+            </div>
+
+            <div class="card book-card">
+                <div class="book-cover-container">
+                    <img src="https://i.ibb.co/VcL1RWGv/Cover-English-Professional.png" alt="AI Professional's Playbook Cover" class="book-cover-img">
+                    
+                    <div class="book-overlay">
+                        <span class="badge-price">3500 دج</span>
+                    </div>
+                </div>
+                <h3>The AI Professional's Playbook</h3>
+                <p class="book-author">By: Aissaoui Mohamed Ouaiss</p>
+                <p>Your practical guide to transforming daily work with Artificial Intelligence. Automate tasks and build a smart workflow.</p>
+                <a href="https://www.instagram.com/onyx_apex/" target="_blank" class="btn-buy">
+                    <i class="fa-brands fa-instagram"></i> Order via Instagram
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.page-section');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                navBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                // Hide all sections
+                sections.forEach(sec => sec.classList.remove('active-page'));
+                
+                // Show target section
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active-page');
+                
+                // Scroll to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
