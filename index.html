@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ai Moha (Owais)| Portfolio</title>
+    <title>Ai Moha (Owais) | Portfolio</title>
     <!-- استدعاء خطوط جوجل العصرية -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- أيقونات FontAwesome -->
@@ -21,26 +21,24 @@
             --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
             --glow: 0 0 15px rgba(212, 175, 55, 0.5);
             
-            /* التعديل هنا: إضافة خطوط الإيموجي لدعم جميع الأنظمة والمتصفحات */
             --font-ar: 'Cairo', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
             --font-en: 'Poppins', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* المتغيرات للوضع الليلي (مستوحى من Solo Leveling - أسود، أزرق سماوي مضيء، بنفسجي) */
+        /* المتغيرات للوضع الليلي */
         [data-theme="dark"] {
             --bg-color: #9600e0;
             --text-color: #ffffff;
-            --primary-color: #00e5ff; /* System Cyan */
-            --secondary-color: #26beff; /* Shadow Purple */
+            --primary-color: #00e5ff;
+            --secondary-color: #26beff;
             --glass-bg: rgba(10, 10, 15, 0.146);
             --glass-border: rgba(0, 229, 255, 0.053);
             --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
             --glow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
         }
 
-        /* 1. إزالة فرض الخطوط الإجباري على جميع العناصر */
         * {
             margin: 0;
             padding: 0;
@@ -48,7 +46,6 @@
             scroll-behavior: smooth;
         }
 
-        /* 2. وضع الخط العربي كلغة افتراضية تتوارثها العناصر بشكل سليم */
         body {
             font-family: var(--font-ar);
             background-color: var(--bg-color);
@@ -57,12 +54,10 @@
             overflow-x: hidden;
         }
 
-        /* 3. عند تغيير اللغة للإنجليزية، يتغير الخط الأساسي بدون تدمير الأيقونات */
         html[lang="en"] body {
             font-family: var(--font-en);
         }
 
-        /* خلفية الموقع (صورة 3000 مع تأثير ضبابي) */
         .background-container {
             position: fixed;
             top: 0;
@@ -73,7 +68,6 @@
             background: url('3000.png') no-repeat center center/cover;
         }
 
-        /* الطبقة الزجاجية فوق الخلفية */
         .glass-overlay {
             position: fixed;
             top: 0;
@@ -82,7 +76,7 @@
             height: 100vh;
             z-index: -1;
             background: var(--bg-color);
-            opacity: 0.85; /* لدمج لون الوضع مع الخلفية */
+            opacity: 0.85;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: var(--transition);
@@ -93,7 +87,6 @@
             background: linear-gradient(135deg, rgba(5,5,8,0.95) 0%, rgba(15,5,25,0.9) 100%);
         }
 
-        /* ستايل القائمة العلوية والتحكم */
         nav {
             display: flex;
             justify-content: space-between;
@@ -120,7 +113,6 @@
             flex-shrink: 0;
         }
 
-        /* تصميم الروابط في القائمة */
         .nav-links {
             display: flex;
             gap: 25px;
@@ -169,7 +161,6 @@
             flex-shrink: 0;
         }
 
-        /* ستايل أزرار التحكم الجديدة (للمظهر والترجمة) */
         .control-btn {
             display: inline-flex;
             align-items: center;
@@ -197,7 +188,6 @@
             border-color: var(--primary-color);
         }
 
-        /* القسم الرئيسي (Hero) */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -261,7 +251,6 @@
             text-shadow: var(--glow);
         }
 
-        /* الأقسام المشتركة (كروت زجاجية) */
         section {
             padding: 80px 5%;
         }
@@ -334,7 +323,6 @@
             margin-bottom: 20px;
         }
 
-        /* الأزرار العصرية */
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -374,25 +362,6 @@
         
         [data-theme="dark"] .btn:hover {
             color: #000;
-        }
-
-        .video-box {
-            width: 100%;
-            height: 200px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-        }
-
-        .video-box:hover {
-            background: rgba(0,0,0,0.5);
-            transform: scale(1.02);
-            border-color: var(--primary-color);
         }
 
         @keyframes floating {
@@ -435,19 +404,16 @@
     <div class="background-container"></div>
     <div class="glass-overlay"></div>
 
-    <!-- القائمة العلوية السينمائية -->
+    <!-- القائمة العلوية -->
     <nav>
         <a href="#" class="logo">Ai Moha (Owais)</a>
         
         <ul class="nav-links">
             <li><a href="#" data-i18n="navHome">الرئيسية</a></li>
             <li><a href="#services" data-i18n="navServices">الخدمات</a></li>
-
-            
         </ul>
 
         <div class="controls">
-            <!-- تم تعديل الأزرار لفصل النص عن الإيموجي -->
             <button class="control-btn" id="langToggle" title="English / عربي">
                 <span id="langText">EN</span> 💬
             </button>
@@ -457,6 +423,7 @@
         </div>
     </nav>
 
+    <!-- القسم الرئيسي -->
     <header class="hero">
         <img src="2000.png" alt="Profile Picture" class="profile-pic">
         <h1 data-i18n="name">Ai Moha (Owais)</h1>
@@ -464,8 +431,6 @@
         <p data-i18n="description">أصنع واجهات ويب عصرية وتجارب بصرية مذهلة، وأدمج بين البرمجة (HTML, CSS, JS) وصناعة الفيديو ✨.</p>
         
         <div class="social-links">
-           
-            <!-- إضافة رابط يوتيوب هنا -->
             <a href="https://www.youtube.com/@Moha-f7t-o1f" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="https://www.facebook.com/ai10moha/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.instagram.com/ai._.mohaowais/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -480,6 +445,7 @@
         <a href="https://www.instagram.com/ai._.mohaowais/" class="btn" data-i18n="hireMe">تواصل معي الآن ⚡</a>
     </header>
 
+    <!-- قسم الخدمات -->
     <section id="services">
         <h2 class="section-title" data-i18n="servicesTitle">خدماتي 🛠️</h2>
         <div class="grid-container">
@@ -498,100 +464,72 @@
         </div>
     </section>
 
+    <!-- معرض القنوات والمنصات -->
     <section id="portfolio">
         <h2 class="section-title" data-i18n="videosTitle">معرض الفيديوهات والقنوات 📺</h2>
         <div class="grid-container">
-            <!-- تم إضافة الرابط حول زر التشغيل (video-box) هنا أيضاً -->
             <div class="glass-card">
                 <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
-                <h3>Ai Moha (Owais)
- <br><span style="font-size: 1rem;">YouTube</span></h3>
-                <a href="https://www.youtube.com/@Moha-f7t-o1f" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
-                <p data-i18n="ytArDesc"></p>
+                <h3>Ai Moha (Owais)<br><span style="font-size: 1rem;">YouTube</span></h3>
+                <p data-i18n="ytArDesc">قناتي المخصصة للمحتوى المرئي واكتشاف الأسرار والمعرفة العميقة 🔍.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
                 <h3 data-i18n="igTitle">Instagram</h3>
-                <a href="https://www.instagram.com/ai._.mohaowais/" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="igDesc">أحدث الريلز والمقاطع القصيرة المليئة بالتأثيرات الاحترافية.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-facebook" style="color: #1877f2;"></i>
                 <h3 data-i18n="fbTitle">Facebook</h3>
-                <a href="https://www.facebook.com/ai10moha/" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="fbDesc">المحتوى المرئي والمنشورات التفاعلية على منصة فيسبوك.</p>
             </div>
             
             <div class="glass-card">
                 <i class="fa-brands fa-x-twitter" style="color: var(--text-color);"></i>
                 <h3 data-i18n="xTitle">X (Twitter)</h3>
-                <a href="https://x.com/Ai10Moha" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="xDesc">أحدث التغريدات والمشاركات السريعة على منصة X.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-discord" style="color: #5865F2;"></i>
                 <h3 data-i18n="discordTitle">Discord</h3>
-                <a href="https://discord.gg/bH9mPmEz" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="discordDesc">انضم إلى مجتمعنا على ديسكورد للتواصل المباشر والنقاشات.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-threads" style="color: var(--text-color);"></i>
                 <h3 data-i18n="threadsTitle">Threads</h3>
-                <a href="https://www.threads.com/@ai._.mohaowais" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="threadsDesc">أحدث المنشورات والأفكار على منصة ثريدز.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-pinterest" style="color: #E60023;"></i>
                 <h3 data-i18n="pinterestTitle">Pinterest</h3>
-                <a href="https://www.pinterest.com/ai10moha/" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="pinterestDesc">لوحات وإلهام بصري على بنترست.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-tiktok" style="color: var(--text-color);"></i>
                 <h3 data-i18n="tiktokTitle">TikTok</h3>
-                <a href="https://www.tiktok.com/@over10haul" target="_blank" style="text-decoration: none; color: inherit;">
-                    
-                </a>
                 <p data-i18n="tiktokDesc">مقاطع فيديو قصيرة وممتعة على تيك توك.</p>
             </div>
 
             <div class="glass-card">
                 <i class="fa-brands fa-snapchat" style="color: #FFFC00;"></i>
                 <h3 data-i18n="snapchatTitle">Snapchat</h3>
-                <a href="https://www.snapchat.com/add/ai10moha" target="_blank" style="text-decoration: none; color: inherit;">
-                   
-                </a>
                 <p data-i18n="snapchatDesc">يوميات وكواليس حصرية على سناب شات.</p>
             </div>
         </div>
     </section>
 
-    
-
+    <!-- الفوتر -->
     <footer>
-        <p data-i18n="footerText">جميع الحقوق محفوظة &copy; 2026 | تم التطوير بواسطة OVERHAUL</p>
+        <p data-i18n="footerText">جميع الحقوق محفوظة &copy; 2026 | تم التطوير بواسطة Ai Moha (Owais)</p>
     </footer>
 
+    <!-- البرمجة النصية للتبديل بين الثيمات والترجمات الدقيقة -->
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
         const rootElement = document.documentElement;
@@ -604,7 +542,6 @@
             
             if (currentTheme === 'dark') {
                 rootElement.removeAttribute('data-theme');
-                // استبدال الرمز فقط للحفاظ على تصميم الزر
                 themeIcon.innerText = '🌙';
                 document.documentElement.style.setProperty('--primary-color', '#d4af37'); 
             } else {
@@ -617,18 +554,13 @@
         const langToggleBtn = document.getElementById('langToggle');
         let currentLang = 'ar';
 
-        // إضافة الإيموجيات مباشرة داخل قاموس الترجمة لضمان بقائها عند تبديل اللغات
         const Translations = {
             ar: {
                 navHome: "الرئيسية",
                 navServices: "الخدمات",
-                navYt1: "المحتوى",
-                navInsta: "إنستقرام",
-                navFb: "فيسبوك",
-                navBooks: "المكتبة",
                 name: "Ai Moha (Owais)",
                 title: "مطور واجهات أمامية & صانع محتوى 🚀",
-                description: "أصنع واجهات ويب عصرية وتجارب بصرية مذهلة، وأدمج بين البرمجة (HTML, CSS, JS) وصناعة الفيديو والكتب لتقديم قيمة حقيقية ✨.",
+                description: "أصنع واجهات ويب عصرية وتجارب بصرية مذهلة، وأدمج بين البرمجة (HTML, CSS, JS) وصناعة الفيديو ✨.",
                 hireMe: "تواصل معي الآن ⚡",
                 servicesTitle: "خدماتي 🛠️",
                 devTitle: "تطوير الويب (Front-End) 💻",
@@ -638,41 +570,31 @@
                 videoDesc: "تحرير وتصميم الفيديوهات باحترافية عالية، إضافة تأثيرات بصرية جذابة لتنمية قنواتك ومنصاتك على السوشيال ميديا.",
                 contactVideo: "تواصل للإنتاج",
                 videosTitle: "معرض الفيديوهات والقنوات 📺",
-                ytArDesc: "قناتي المخصصة للمحتوى العربي واكتشاف الأسرار والمعرفة العميقة 🔍.",
-                ytEnDesc: "قناتي الأجنبية المخصصة للتطوير الذاتي والإصلاح الشامل باللغة الإنجليزية 🌍.",
-                igTitle: "مقاطع إنستقرام 🔥",
+                ytArDesc: "قناتي المخصصة للمحتوى المرئي واكتشاف الأسرار والمعرفة العميقة 🔍.",
+                igTitle: "Instagram",
                 igDesc: "أحدث الريلز والمقاطع القصيرة المليئة بالتأثيرات الاحترافية.",
-                fbTitle: "مقاطع فيسبوك 📱",
+                fbTitle: "Facebook",
                 fbDesc: "المحتوى المرئي والمنشورات التفاعلية على منصة فيسبوك.",
-                xTitle: "منصة X 🐦",
+                xTitle: "X (Twitter)",
                 xDesc: "أحدث التغريدات والمشاركات السريعة على منصة X.",
-                discordTitle: "ديسكورد 🎮",
+                discordTitle: "Discord",
                 discordDesc: "انضم إلى مجتمعنا على ديسكورد للتواصل المباشر والنقاشات.",
-                threadsTitle: "منصة ثريدز 🧵",
-                threadsDesc: "أحدث المنشورات والأفكار والمناقشات على منصة ثريدز.",
-                pinterestTitle: "بنترست 📌",
+                threadsTitle: "Threads",
+                threadsDesc: "أحدث المنشورات والأفكار على منصة ثريدز.",
+                pinterestTitle: "Pinterest",
                 pinterestDesc: "لوحات بصرية وإلهام في التصميم والمحتوى.",
-                tiktokTitle: "تيك توك 🎵",
+                tiktokTitle: "TikTok",
                 tiktokDesc: "مقاطع فيديو قصيرة وتأثيرات بصرية ممتعة.",
-                snapchatTitle: "سناب شات 👻",
+                snapchatTitle: "Snapchat",
                 snapchatDesc: "يوميات وكواليس حصرية للعمل والإنتاج.",
-                
-                booksTitle: "مكتبة Ai Moha (Owais) 📖",
-                booksSubTitle: "كتبي ومؤلفاتي 🖋️",
-                booksDesc: "أقوم بكتابة وبيع كتب متخصصة في تطوير الذات، الهندسة الاقتصادية، وبروتوكولات السيادة. يمكنك تصفح واقتناء كتبي من خلال متجري الخاص 🛒.",
-                visitStore: "زيارة مكتبة الكتب",
                 footerText: "جميع الحقوق محفوظة © 2026 | تم التطوير بواسطة Ai Moha (Owais)"
             },
             en: {
                 navHome: "Home",
                 navServices: "Services",
-                navYt1: "Content",
-                navInsta: "Instagram",
-                navFb: "Facebook",
-                navBooks: "Library",
                 name: "Ai Moha (Owais)",
                 title: "Front-End Developer & Content Creator 🚀",
-                description: "I craft modern web interfaces and stunning visual experiences, blending coding (HTML, CSS, JS) with video production and book creation to deliver real value ✨.",
+                description: "I craft modern web interfaces and stunning visual experiences, blending coding (HTML, CSS, JS) with video production ✨.",
                 hireMe: "Contact Me Now ⚡",
                 servicesTitle: "My Services 🛠️",
                 devTitle: "Web Development (Front-End) 💻",
@@ -682,34 +604,27 @@
                 videoDesc: "High-quality video editing and design, featuring engaging visual effects to grow your social media channels and platforms.",
                 contactVideo: "Contact for Production",
                 videosTitle: "Video & Channel Gallery 📺",
-                ytArDesc: "My channel dedicated to Arabic content, uncovering secrets, and exploring deep knowledge 🔍.",
-                ytEnDesc: "My foreign channel dedicated to self-development and comprehensive reform in English 🌍.",
-                igTitle: "Instagram Clips 🔥",
+                ytArDesc: "My channel dedicated to visual content, discovering secrets, and exploring deep knowledge 🔍.",
+                igTitle: "Instagram",
                 igDesc: "The latest Reels and short clips packed with professional effects.",
-                fbTitle: "Facebook Clips 📱",
+                fbTitle: "Facebook",
                 fbDesc: "Visual content and interactive posts for Facebook.",
-                xTitle: "X Platform 🐦",
+                xTitle: "X (Twitter)",
                 xDesc: "The latest tweets and quick updates on X.",
-                discordTitle: "Discord 🎮",
+                discordTitle: "Discord",
                 discordDesc: "Join our Discord community for direct communication and discussions.",
-                threadsTitle: "Threads 🧵",
+                threadsTitle: "Threads",
                 threadsDesc: "The latest posts, thoughts, and discussions on Threads.",
-                pinterestTitle: "Pinterest 📌",
+                pinterestTitle: "Pinterest",
                 pinterestDesc: "Visual boards and inspiration in design and content.",
-                tiktokTitle: "TikTok 🎵",
+                tiktokTitle: "TikTok",
                 tiktokDesc: "Short videos and fun visual effects.",
-                snapchatTitle: "Snapchat 👻",
+                snapchatTitle: "Snapchat",
                 snapchatDesc: "Exclusive daily vlogs and behind-the-scenes of production.",
-
-                booksTitle: "Ai Moha (Owais) Library 📖",
-                booksSubTitle: "My Books and Publications 🖋️",
-                booksDesc: "I write and sell books specializing in self-development, economic engineering, and sovereignty protocols. You can browse and purchase my books through my store 🛒.",
-                visitStore: "Visit the Bookstore",
                 footerText: "All rights reserved © 2026 | Developed by Ai Moha (Owais)"
             }
         };
 
-        // تحديث النصوص عند تغيير اللغة 
         const updateTexts = () => {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -724,14 +639,11 @@
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             
-            // تحديث نص زر اللغة من EN إلى AR والعكس
             const langText = document.getElementById('langText');
             langText.innerText = currentLang === 'ar' ? 'EN' : 'AR';
             
-            // استدعاء دالة تحديث النصوص لتفعيل الترجمة
             updateTexts();
         });
-
     </script>
 </body>
 </html>
